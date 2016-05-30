@@ -1,4 +1,5 @@
 import pygame
+import math
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -7,6 +8,7 @@ BLUE = (50, 255, 255)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+GRAVITY = 1
 
 class Player(pygame.sprite.Sprite):
     """ This class represents the bar at the bottom that the player
@@ -28,7 +30,7 @@ class Player(pygame.sprite.Sprite):
  
         # Set speed vector
         self.change_x = 0
-        self.change_y = 0
+        self.change_y = GRAVITY
         self.walls = None
  
     def changespeed(self, x, y):
@@ -38,6 +40,7 @@ class Player(pygame.sprite.Sprite):
  
     def update(self):
         """ Update the player position. """
+
         # Move left/right
         self.rect.x += self.change_x
  
@@ -157,4 +160,3 @@ while not done:
     clock.tick(60)
  
 pygame.quit()
-﻿
